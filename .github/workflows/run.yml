@@ -29,19 +29,24 @@ jobs:
         run: |
           pip install -e .
 
-      - name: Run ADS queries
-        run: |
-          python scripts/query_ads.py
+      # - name: Run ADS queries
+      #   run: |
+      #     python scripts/query_ads.py
 
       - name: Clone Astropy
         uses: actions/checkout@v2
         with:
           fetch-depth: 0
+          repository: 'astropy/astropy'
           path: '../'
 
       - name: Run Git log parsing
         run: |
           python scripts/make_gitstats.py ../astropy
+
+      - name: Run Jupyter notebooks
+        run: | # TODO
+          ls cache
 
       # - uses: actions/upload-artifact@v2
       #   with:
