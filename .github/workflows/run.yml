@@ -5,6 +5,9 @@ on:
   push: # TODO: change this to weekly cron
     branches: [main]
 
+env:
+  ADS_DEV_KEY: ${{ secrets.ADS_DEV_KEY }}
+
 jobs:
   run_scripts:
     name: Run ADS queries and Astropy Git log parsing
