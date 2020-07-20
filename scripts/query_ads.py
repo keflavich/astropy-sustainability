@@ -30,4 +30,5 @@ for slug, query in queries.items():
     if os.path.exists(filename):
         print(f"Results exist for '{slug}' - skipping...")
     q, papers_df = get_papers(query, rows_per_page=1000, max_pages=100)
+    print(q.response.get_ratelimits())
     papers_df.to_csv(filename)
