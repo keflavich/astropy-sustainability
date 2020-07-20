@@ -26,5 +26,8 @@ cache_path = os.path.join(os.path.split(os.path.abspath(__file__))[0],
 os.makedirs(cache_path, exist_ok=True)
 
 for slug, query in queries.items():
+    filename = os.path.join(cache_path, f'{slug}.csv')
+    if os.path.exists(filename):
+        print(f"Results exist for '{slug}' - skipping...")
     q, papers_df = get_papers(query, rows_per_page=1000, max_pages=100)
-    papers_df.to_csv(os.path.join(cache_path, f'{slug}.csv'))
+    papers_df.to_csv(filename)

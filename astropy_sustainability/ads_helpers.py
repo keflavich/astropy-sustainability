@@ -37,8 +37,8 @@ def get_papers(query, rows_per_page=100, max_pages=100):
             authors='; '.join(paper.author) if paper.author else '',
             year=int(paper.year) if paper.year is not None else -1,
             pubdate=paper.pubdate if paper.pubdate is not None else '',
-            title=paper.title[0],
-            pub=paper.pub,
+            title=paper.title[0] if paper.title is not None else '',
+            pub=paper.pub if paper.pub is not None else '',
             arxiv=aid[0] if len(aid) else '',
             citations=(paper.citation_count
                        if paper.citation_count is not None else 0)
