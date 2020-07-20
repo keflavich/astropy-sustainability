@@ -38,11 +38,11 @@ jobs:
         with:
           fetch-depth: 0
           repository: 'astropy/astropy'
-          path: '../'
+          path: 'astropy'
 
       - name: Run Git log parsing
         run: |
-          python scripts/make_gitstats.py ../astropy
+          python scripts/make_gitstats.py astropy
 
       - name: Run Jupyter notebooks
         run: | # TODO
