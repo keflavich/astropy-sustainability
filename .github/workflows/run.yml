@@ -1,0 +1,46 @@
+name: Run dashboard
+on:
+  pull_request:
+    branches: [main]
+  push: # TODO: change this to weekly cron
+    branches: [main]
+
+jobs:
+  run_scripts:
+    name: Run ADS queries and Astropy Git log parsing
+    runs-on: ubuntu-18.04
+    strategy:
+      fail-fast: true
+
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v2
+        name: Install Python
+        with:
+          python-version: "3.7"
+
+      - name: Install package and dependencies
+        run: |
+          pip install -e .
+
+      - name: Run ADS queries
+        run: |
+          python scripts/query_ads.py
+
+      - name: Clone Astropy
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+          path: '../'
+
+      - name: Run Git log parsing
+        run: |
+          python scripts/make_gitstats.py ../astropy
+
+      # - uses: actions/upload-artifact@v2
+      #   with:
+      #     path: ./wheelhouse/*.whl
+
