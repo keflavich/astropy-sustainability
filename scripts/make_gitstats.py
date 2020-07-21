@@ -1,5 +1,3 @@
-"""TODO: need to clone astropy as well..."""
-
 # Standard library
 import os
 import sys

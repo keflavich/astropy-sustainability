@@ -1,5 +1,3 @@
-"""TODO: need to store ADS_DEV_KEY on CI"""
-
 # Standard library
 import os
 
