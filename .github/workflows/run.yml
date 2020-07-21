@@ -57,13 +57,11 @@ jobs:
           cp _static/* build
 
       - name: Deploy executed notebooks
+        if: success()
         uses: JamesIves/github-pages-deploy-action@3.5.7
         with:
           ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
           BRANCH: gh-pages
           FOLDER: build
 
-      # - uses: actions/upload-artifact@v2
-      #   with:
-      #     path: ./wheelhouse/*.whl
 
