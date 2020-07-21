@@ -47,7 +47,7 @@ jobs:
       - name: Run Jupyter notebooks
         run: |
           ls cache
-          jupyter nbconvert --to html --ExecutePreprocessor.kernel_name=python3 --execute notebooks/*
+          jupyter nbconvert --to html --ExecutePreprocessor.kernel_name=python3 --execute notebooks/*.ipynb
           mkdir build
           cp notebooks/*.html build
 
