@@ -28,7 +28,8 @@ jobs:
       - name: Install package and dependencies
         run: |
           sudo apt-get update -y
-          sudo apt-get install -y texlive-latex-recommended texlive-latex-extra texlive-fonts-recommended
+          sudo apt-get install -y texlive-latex-recommended texlive-latex-extra texlive-fonts-recommended dvipng
+          sudo apt-get install cm-super
           pip install -e .
 
       - name: Run ADS queries
