@@ -4,6 +4,8 @@ on:
     branches: [main]
   schedule:
     - cron:  '0 0 * * 1' # every week at 12:00 Monday
+  push:  # TODO: remove this when done with setup
+    branches: [main]
 
 env:
   ADS_DEV_KEY: ${{ secrets.ADS_DEV_KEY }}
