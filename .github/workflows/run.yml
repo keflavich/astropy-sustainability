@@ -57,11 +57,12 @@ jobs:
           cp _static/* build
 
       - name: Deploy executed notebooks
-        if: success()
+        if: ${{ success() && github.event_name != 'pull_request' }}
         uses: JamesIves/github-pages-deploy-action@3.5.7
         with:
           ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
           BRANCH: gh-pages
           FOLDER: build
+          SINGLE_COMMIT: true
 
 
