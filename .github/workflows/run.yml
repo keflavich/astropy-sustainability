@@ -29,9 +29,9 @@ jobs:
         run: |
           pip install -e .
 
-      # - name: Run ADS queries
-      #   run: |
-      #     python scripts/query_ads.py
+      - name: Run ADS queries
+        run: |
+          python scripts/query_ads.py
 
       - name: Clone Astropy
         uses: actions/checkout@v2
@@ -45,8 +45,18 @@ jobs:
           python scripts/make_gitstats.py astropy
 
       - name: Run Jupyter notebooks
-        run: | # TODO
+        run: |
           ls cache
+          jupyter nbconvert --to html --execute notebooks/*
+          mkdir build
+          cp notebooks/*.html build
+
+      - name: Deploy executed notebooks
+        uses: JamesIves/github-pages-deploy-action@3.5.7
+        with:
+          ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+          BRANCH: gh-pages
+          FOLDER: build
 
       # - uses: actions/upload-artifact@v2
       #   with:
