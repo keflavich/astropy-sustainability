@@ -53,7 +53,7 @@ jobs:
           jupyter nbconvert --to html --ExecutePreprocessor.kernel_name=python3 --execute notebooks/*.ipynb
           mkdir build
           cp notebooks/*.html build
-          cp *.png build
+          cp plots/*.png build
           cp _static/* build
 
       - name: Deploy executed notebooks
