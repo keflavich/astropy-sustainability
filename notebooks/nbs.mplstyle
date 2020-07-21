@@ -1,4 +1,6 @@
 # fonty stuffs
+font.serif: cm
+font.family: serif
 mathtext.fontset: cm
 text.usetex: True
 

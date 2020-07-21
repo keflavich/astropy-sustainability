@@ -29,7 +29,7 @@ jobs:
         run: |
           sudo apt-get update -y
           sudo apt-get install -y texlive-latex-recommended texlive-latex-extra texlive-fonts-recommended dvipng
-          sudo apt-get install cm-super
+          sudo apt-get install cm-super-minimal
           pip install -e .
 
       - name: Run ADS queries

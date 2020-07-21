@@ -33,5 +33,7 @@ pip-wheel-metadata/
 # Mac OSX
 .DS_Store
 
+# Project
 cache
+plots
 *.html
